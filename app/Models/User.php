@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the albums associated with the user.
+     */
+    public function albums()
+    {
+        return $this->hasMany(Album::class);
+    }
 }
