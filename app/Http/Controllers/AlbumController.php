@@ -137,8 +137,17 @@ class AlbumController extends Controller
      * @param  \App\Models\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Album $album)
+    public function destroy(Request $request,Album $album)
     {
-        //
+        try {
+            if(request('choice') == 2) {
+                Media::where('model_id', $album->id)->update('model_id', request('album'));
+            }
+
+            $album->delete();
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 'error', 'message' => $th->getMessage()], 500);
+        }
+        return ['message' => 'success'];
     }
 }
