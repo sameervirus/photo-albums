@@ -141,7 +141,7 @@ class AlbumController extends Controller
     {
         try {
             if(request('choice') == 2) {
-                Media::where('model_id', $album->id)->update('model_id', request('album'));
+                Media::where('model_id', $album->id)->update(['model_id' => request('album')]);
             }
 
             $album->delete();

@@ -86,7 +86,7 @@
             const choice = $('input[name=flexRadioDefault]:checked', '#myForm').val()
             const album = $("#selectAlbum").val()
             const id = $('#deletedId').val()
-            $.post("/albums", {
+            $.post("/albums/" + id, {
                 '_method': 'delete',
                 '_token': '{{ csrf_token() }}',
                 'choice': choice,
@@ -94,6 +94,13 @@
                 'id': id
 
             })
+            .done(function( data ) {
+                alert( "Album has been deleted successfully" );
+                window.location.reload()
+            })
+            .fail(function( data ) {
+                alert( "Error: " + data );
+            });
         })
 
         function toggleList() {
