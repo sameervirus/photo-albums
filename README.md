@@ -1,4 +1,4 @@
-# MyStore Simple App
+# Photo Albums Simple App
 
 Photo album simple application build with Laravel 9. using Laravel-medialibrary, Yajra Datatable
 
@@ -15,7 +15,9 @@ Installation
 ```bash
 Composer install
 
-npm i
+npm install
+
+npm run build
 
 php artisan migrate
 
